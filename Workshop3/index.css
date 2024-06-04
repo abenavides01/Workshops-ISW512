@@ -1,0 +1,11 @@
+:root {
+    --primary-color: #1411dc;
+	--important-color: #e34529;
+	--secondary-color: white;
+	--main-border-style: 1px solid var(--primary-color);
+	--strong-border-style: 5px solid var(--primary-color);
+}
+
+body {
+    background-color: var(--secondary-color);
+}
