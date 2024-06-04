@@ -9,3 +9,12 @@
 body {
     background-color: var(--secondary-color);
 }
+
+span, h1 {
+	line-height: 2px;
+}
+
+h1 {
+	color: #80d81b;
+	text-align: center;
+}
