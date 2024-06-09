@@ -1,16 +1,18 @@
 :root{
-    --primary-color: #0b507e; 
+    --primary-color: #d60000; 
     --secondary-color: white; 
-    --main-border-style: 1px solid var(--primary-color);
+    --main-border-style: 5px solid var(--primary-color);
     --strong-border-style: 5px solid var(--primary-color);
+    --font-family: 'Arial, sans-serif';
 }
 
 body{
+    font-family: var(--font-family);
     background-color: var(--secondary-color);
 }
 
 .header {
-	background-color: var(--primary-color);
+	background-color: var(--secondary-color);
 	color: var(--secondary-color);
 	border: var(--main-border-style);
 }
