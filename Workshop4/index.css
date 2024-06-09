@@ -1,9 +1,12 @@
 :root{
     --primary-color: #d60000; 
     --secondary-color: white; 
+    --font-color: black;
     --main-border-style: 5px solid var(--primary-color);
     --strong-border-style: 5px solid var(--primary-color);
-    --font-family: 'Arial, sans-serif';
+    --font-family: 'Arial, sans-serif'solid var(--font-color);
+    --text-align: center;
+    --padding: 30px 0 solid var(--primary-color);
 }
 
 body{
@@ -15,4 +18,10 @@ body{
 	background-color: var(--secondary-color);
 	color: var(--secondary-color);
 	border: var(--main-border-style);
+    padding: var(--padding);
+}
+
+.header img{
+    display: block;
+    margin: 0 auto;
 }
