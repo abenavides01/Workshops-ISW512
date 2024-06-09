@@ -28,7 +28,7 @@ body{
     display: var(--img-bloque);
     margin: var(--img-margen);
 }
-/*posible cmabio*/
+
 .main{
     
 	color: var(--font-color);
@@ -41,12 +41,6 @@ h1 {
     background-color: var(--primary-color);
 	text-align: var(--text-align);
 }
-/*
-h5 {
-    color: var(--primary-color);
-    text-align: var(--text-align);
-}
-*/
 
 .container {
     display: flex;
@@ -83,7 +77,6 @@ h5 {
     color: #333;
 }
 
-/* Estilos para la primera letra */
 p .noticia::first-letter {
     font-weight: bold;
     color: blue;
