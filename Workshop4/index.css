@@ -29,13 +29,6 @@ body{
     margin: var(--img-margen);
 }
 
-.main{
-    
-	color: var(--font-color);
-	border: var(--main-border-style);
-    padding: var(--padding);
-    text-align: var(--text-align);
-}
 h1 {
 	color: var(--secondary-color);
     background-color: var(--primary-color);
@@ -75,10 +68,4 @@ h1 {
 .noticia p {
     font-size: 0.9em;
     color: #333;
-}
-
-p .noticia::first-letter {
-    font-weight: bold;
-    color: blue;
-    font-size: 150%;
 }
