@@ -1,38 +1,38 @@
-:root{
-    --primary-color: #d60000; 
-    --secondary-color: white; 
+:root {
+    --primary-color: #d60000;
+    --secondary-color: white;
     --font-color: black;
     --main-border-style: 5px solid var(--primary-color);
     --strong-border-style: 5px solid var(--primary-color);
-    --font-family: 'Arial, sans-serif'solid var(--font-color);
+    --font-family: 'Arial, sans-serif' solid var(--font-color);
     --text-align: center;
     --padding: 5px 0 solid var(--primary-color);
     --img-bloque: block;
     --img-margen: 0 auto;
 }
 
-body{
+body {
     font-family: var(--font-family);
     background-color: var(--secondary-color);
     text-align: var(--text-align);
 }
 
 .header {
-	text-align: var(--text-align);
-	color: var(--font-color);
-	/*border: var(--main-border-style);*/
+    text-align: var(--text-align);
+    color: var(--font-color);
+    /*border: var(--main-border-style);*/
     padding: var(--padding);
 }
 
-.header img{
+.header img {
     display: var(--img-bloque);
     margin: var(--img-margen);
 }
 
 h1 {
-	color: var(--secondary-color);
+    color: var(--secondary-color);
     background-color: var(--primary-color);
-	text-align: var(--text-align);
+    text-align: var(--text-align);
 }
 
 .container {
@@ -49,7 +49,7 @@ h1 {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0);
 }
 
-.noticia img{
+.noticia img {
     width: 100%;
     height: auto;
 }

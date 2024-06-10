@@ -94,12 +94,6 @@ body {
 .content {
     display: var(--display);
     flex-wrap: wrap;
-    align-items: center;
-    gap: 20px;
-}
-
-.content .gol {
-    flex: 2;
 }
 
 .content .text {
@@ -108,18 +102,18 @@ body {
 
 .noticia img {
     width: 1000%;
-    max-width: 600px;
+    max-width: 500px;
     /* Limita el ancho máximo de la imagen */
     height: auto;
 }
 
 .noticia p {
-    font-size: 1em;
+    font-size: 1.3em;
     text-align: justify;
     color: #333;
 }
 
-h2 {
+.main_noticia h2 {
     color: var(--secondary-color);
     background-color: var(--primary-color);
     text-align: var(--text-align);
@@ -129,10 +123,4 @@ h5 {
     color: var(--primary-color);
     text-align: var(--text-align);
     font-size: 1.2em;
-}
-
-p .noticia::first-letter {
-    font-weight: bold;
-    color: blue;
-    font-size: 150%;
 }
