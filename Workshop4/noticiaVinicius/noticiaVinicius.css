@@ -102,7 +102,7 @@ body {
 
 .noticia img {
     width: 1000%;
-    max-width: 500px;
+    max-width: 1000px;
     /* Limita el ancho máximo de la imagen */
     height: auto;
 }
