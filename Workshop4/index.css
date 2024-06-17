@@ -20,7 +20,6 @@ body {
 .header {
     text-align: var(--text-align);
     color: var(--font-color);
-    /*border: var(--main-border-style);*/
     padding: var(--padding);
 }
 
