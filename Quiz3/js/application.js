@@ -107,6 +107,7 @@ function bindEvents() {
 }
 
 function registerButtonHandler() {
+	saveUser();
 	editUser();
 }
 
