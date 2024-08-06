@@ -1,55 +1,50 @@
-
-function validateUser() {
-	const username = document.getElementById('username').value;
-	const password = document.getElementById('password').value;
-	const errorElement = document.getElementById('error_msg');
-
-	if (username == 'admin' && password == 'password') {
-		console.log('logged in');
-		// localStorage.setItem('username', username);
-		errorElement.innerHTML = 'User is valid';
-		errorElement.setAttribute("style", "display:block;");
-	} else {
-		errorElement.innerHTML = 'Username or Password invalid';
-		errorElement.setAttribute("style", "display:block;");
-	}
+function getFromLocalStorage(key) {
+	return JSON.parse(localStorage.getItem(key)) || [];
 }
 
+function saveToLocalStorage(key, data) {
+	const existingData = getFromLocalStorage(key);
+	existingData.push(data);
+	localStorage.setItem(key, JSON.stringify(existingData));
+	return true;
+}
 
 function loadUser() {
-	// look for the username from the querystring
+	// Obtén el nombre de usuario de la query string
 	const urlParams = new URLSearchParams(window.location.search);
-	username = urlParams.get('u');
+	const username = urlParams.get('u');
 	if (username) {
-		//loop through the user's array
+		// Recupera los usuarios del almacenamiento local
 		const users = getFromLocalStorage('users');
-		let matcheduser = '';
+		let matchedUser = null;
+
+		// Encuentra el usuario que coincida con el nombre de usuario
 		users.forEach((user) => {
-			//find the user that matches the username
-			if(user.username === username){
-				matcheduser = user;
+			if (user.username === username) {
+				matchedUser = user;
 				return;
 			}
-		 });
+		});
 
-		//fill the edit form with the user values
-		document.getElementById('username').value = matcheduser.username;
-		document.getElementById('firstname').value = matcheduser.firstname;
-		document.getElementById('password').value = matcheduser.password;
-
+		// Si se encuentra el usuario, rellena el formulario con sus datos
+		if (matchedUser) {
+			document.getElementById('username').value = matchedUser.username;
+			document.getElementById('firstname').value = matchedUser.firstname;
+			document.getElementById('password').value = matchedUser.password;
+		}
 	}
 }
 
 function loadUsers() {
-	// loop the users in localstorage
+	// Recupera los usuarios del almacenamiento local
 	const users = getFromLocalStorage('users');
-	users.forEach((user,index) => {
-		// add each user to the the existing table
+	users.forEach((user, index) => {
+		// Añade cada usuario a la tabla existente
 		const table = document.getElementById("user-table-rows");
-		table.innerHTML +=  `<tr><th scope="row">${index}</th><td>${user.firstname}</td><td>${user.username}</td><td>${user.type}</td><td> <a href="./edit_user.html?u=${user.username}">Edit</a> | <a href="">Delete</a></td></tr>`
+		table.innerHTML += `<tr><th scope="row">${index}</th><td>${user.firstname}</td><td>${user.username}</td><td>${user.type}</td><td><a href="./edit_user.html?u=${user.username}">Edit</a> | <a href="#">Delete</a></td></tr>`;
 	});
-
 }
+
 function saveUser() {
 	const username = document.getElementById('username').value;
 	const firstname = document.getElementById('firstname').value;
@@ -70,22 +65,16 @@ function saveUser() {
 	}
 }
 
-/**
- * Binds the different events to the different elements of the page
- */
 function bindEvents() {
-	// document.getElementById('login-button').addEventListener('click', loginButtonHandler);
-	if(document.getElementById('register-button')) {
+	// Vincula los eventos a los elementos de la página
+	if (document.getElementById('register-button')) {
 		document.getElementById('register-button').addEventListener('click', registerButtonHandler);
 	}
-	// jQuery('#login-button').bind('click', loginButtonHandler);
-	// jQuery('#register-button').bind('click', registerButtonHandler);
 }
 
-function loginButtonHandler(element) {
-	validateUser();
-}
-
-function registerButtonHandler(element) {
+function registerButtonHandler() {
 	saveUser();
 }
+
+bindEvents();
+loadUser();
