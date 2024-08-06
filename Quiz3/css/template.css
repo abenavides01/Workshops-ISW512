@@ -1,0 +1,74 @@
+body {
+	background-color:  rgb(81, 76, 81);
+
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 {
+	color: #fff;
+	text-align: justify;
+}
+
+
+p:first-of-type {
+	color: red;
+}
+
+/*a:hover {
+	text-decoration: underline;
+	cursor: -webkit-zoom-in;
+}*/
+
+p::first-line {
+	color: white;
+}
+
+p::first-letter {
+
+	font-size: 20px;
+}
+
+p::after {
+	content: ' Fin del Parraro';
+}
+
+p::before {
+	content: 'Inicio del Parrafo ';
+}
+
+p::selection {
+	background-color: white;
+	color: yellow;
+}
+
+.required {
+	color: red;
+}
+
+span.required {
+	padding: 5px;
+}
+
+
+div.error_msg {
+	display: none;
+	color: white;
+	background-color: red;
+	border: 1px solid black;
+	padding: 2px;
+}
+
+
+
+/*
+input.required {
+	border: 2px solid red;
+}*/
+
+/*div.form-general-info span.required {
+	color: blue;
+}
+*/
