@@ -3,11 +3,8 @@ function getFromLocalStorage(key) {
 }
 
 function saveToLocalStorage(key, data) {
-	const existingData = getFromLocalStorage(key);
-	existingData.push(data);
-	localStorage.setItem(key, JSON.stringify(existingData));
-	return true;
-}
+    localStorage.setItem(key, JSON.stringify(data));
+  }
 
 function loadUser() {
 	// Obtén el nombre de usuario de la query string
@@ -50,30 +47,67 @@ function saveUser() {
 	const firstname = document.getElementById('firstname').value;
 	const password = document.getElementById('password').value;
 
-	const user = {
-		username,
-		firstname,
-		password,
-		"type": "user"
-	};
+	const users = getFromLocalStorage('users');
+	let userIndex = users.findIndex((user) => user.username === username);
 
-	if (saveToLocalStorage('users', user)) {
-		alert('User saved');
+	if (userIndex !== -1) {
+		// Actualizar usuario existente
+		users[userIndex].firstname = firstname;
+		users[userIndex].password = password;
+	} else {
+		// Añadir nuevo usuario
+		users.push({
+			username,
+			firstname,
+			password,
+			"type": "user"
+		});
+	}
+
+	saveToLocalStorage('users', users);
+
+	alert('User saved');
+	document.location.href = "./dashboard.html";
+}
+
+function deleteUser(username) {
+	const users = getFromLocalStorage('users');
+	const updatedUsers = users.filter(user => user.username !== username);
+
+	saveToLocalStorage('users', updatedUsers);
+
+	alert('User deleted');
+	loadUser(); //recarga la tabla de usuarios
+}
+
+function editUser() {
+	const username = document.getElementById('username').value;
+	const firstname = document.getElementById('firstname').value;
+	const password = document.getElementById('password').value;
+
+	let users = JSON.parse(localStorage.getItem('users')) || [];
+	const existingUserIndex = users.findIndex(user => user.username === username);
+	if (existingUserIndex !== -1) {
+		users[existingUserIndex] = { username, firstname, password, "type": "user" };
+		localStorage.setItem('users', JSON.stringify(users));
+		alert('User updated');
 		document.location.href = "./dashboard.html";
 	} else {
-		alert('There was an error registering the user');
+		alert('User not found');
 	}
 }
 
 function bindEvents() {
-	// Vincula los eventos a los elementos de la página
-	if (document.getElementById('register-button')) {
+	if(document.getElementById('register-button')) {
 		document.getElementById('register-button').addEventListener('click', registerButtonHandler);
+	}
+	if(document.getElementById('edit-button')) {
+		document.getElementById('edit-button').addEventListener('click', editButtonHandler);
 	}
 }
 
 function registerButtonHandler() {
-	saveUser();
+	editUser();
 }
 
 bindEvents();
